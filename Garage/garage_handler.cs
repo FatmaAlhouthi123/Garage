@@ -42,7 +42,7 @@ namespace Garage {
                         Console.WriteLine(garage.ToArray()[i].RegisterNumber == reg_no);
 
                     if (garage.ToArray()[i].RegisterNumber == reg_no) {
-                            //   garage.ToArray()[i] = default;
+                            ////   garage.ToArray()[i] = default;
 
 
 
