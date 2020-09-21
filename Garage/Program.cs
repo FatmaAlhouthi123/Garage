@@ -4,68 +4,32 @@ using System.Linq;
 namespace Garage {
     class Program {
         static void Main(string[] args) {
-            bool inLoop = true;
 
-            garage_handler gh = new garage_handler();
-            Garage_Manager gm = new Garage_Manager();
-           
-            gm.Default_vehcles_in_garage();
-           
-            
-            GarageClass<IVehcle> garage = new GarageClass<IVehcle>();
+
+
 
 
             Console.WriteLine(" *************************************Welcome to garage************************************* ");
 
 
-            //int reg_no = 0;     // delet
 
-            //    bool reg_No_Validation = true;
+            Garage_Manager gm = new Garage_Manager();
+            gm.Default_vehcles_in_garage();
 
+            bool inLoop = true;
 
-
-
-
-
-
-
-            //        foreach (IVehcle vehcle in garage)
-
-            //    {
-
-            //                Console.WriteLine("again");
-            //    if (vehcle is null) { Console.WriteLine("null"); }
-
-            //        else
-            //        {
-            //            if (vehcle.RegisterNumber == reg_no)
-
-            //            {
-            //                reg_No_Validation = true;
-            //                Console.WriteLine($"reg_No_Validation {reg_No_Validation}  &reg_no {reg_no} ");
-            //            }
-
-            //            else
-            //            { reg_No_Validation = false; Console.WriteLine("vehcle.RegisterNumber != reg_no"); }
-            //        }
-
-
-            //    }
+            garage_handler gh = new garage_handler();
 
 
 
 
+            while (inLoop)
+            {
 
-
-
-            //DEL
-
-            while (inLoop) {
-
-                Console.WriteLine("\n What do you want to do? type number from 1 to 5"); 
-            Console.WriteLine(" 1- get total Parking spaces   2- add vehcle   3- remove vehcle ");
-            Console.WriteLine("4- get number of vacant Parking spaces  5- get number of populated Parking spaces " +
-                " \n 6-get ifo om vehcle in garage and number of them     0- to close application\n");
+                Console.WriteLine("\n What do you want to do? type number from 1 to 5");
+                Console.WriteLine(" 1- get total Parking spaces   2- add vehcle   3- remove vehcle ");
+                Console.WriteLine("4- get number of vacant Parking spaces  5- get number of populated Parking spaces " +
+                    " \n 6-get ifo om vehcle in garage and number of them     0- to close application\n");
                 Console.WriteLine(" *************************************************************************** \n");
 
                 int chooice = int.Parse(Console.ReadLine());
@@ -74,7 +38,7 @@ namespace Garage {
 
                     case 1:
                         {
-                            Console.WriteLine(gm.Naumber_of_total_parkingSpaces());
+                            Console.WriteLine($" There are {gm.Naumber_of_total_parkingSpaces()} parkering spaces in garage.");
                         }
                         break;
 
@@ -109,13 +73,13 @@ namespace Garage {
 
                     case 5:
                         {
-                            gm.Number_of_vehcle_in_garage();
+                            Console.WriteLine(gm.Number_of_vehcle_in_garage());
 
                         }
                         break;
 
 
-                        
+
                     case 6:
                         {
                             gm.All_Vehcle_in_garag();
@@ -141,31 +105,7 @@ namespace Garage {
                         }
                         break;
 
-                       
-
-
                 }
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
 
             }
 

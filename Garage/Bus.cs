@@ -10,7 +10,7 @@ namespace Garage {
 
 
 
-        public Bus(int registerNo, string color, int WheelsNo, FuelType fuel_t) : base(registerNo, color, WheelsNo) {
+        public Bus(string registerNo, string color, int WheelsNo, FuelType fuel_t) : base(registerNo, color, WheelsNo) {
             this.FuelType = fuel_t;
             this.VehcleType = V_Type.bus;
 

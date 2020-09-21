@@ -8,10 +8,11 @@ namespace Garage {
     class garage_handler : UI {
 
         GarageClass<IVehcle> garage = new GarageClass<IVehcle>();
+        Garage_Manager gm = new Garage_Manager();
 
         V_Type fordon_type;
         FuelType fuelType;
-        int reg_no;
+        string reg_no;
         string color;
         int wheels_no;
         int number_of_seats;
@@ -21,44 +22,48 @@ namespace Garage {
 
 
         public void Add_vehcle_to_Garage() {
-
             garage.Populate_Garage(Creat_vehcle());
-
         }
 
 
         public void Remove_vehcle_from_Garage() {
+            //IEnumberable is immutable,
+            IVehcle[] gArray = garage.ToArray();
 
             Console.WriteLine("Enter register Number for vehcle that you want to take out of garage ");
 
-            reg_no = int.Parse(Console.ReadLine());
+            try { reg_no = Console.ReadLine();} catch (FormatException e) { Console.WriteLine( e.Message); }
+                
+
 
             if (Check_reg_No())
-                for (int i = 0; i < garage.ToArray().Length; i++)
+
+                for (int i = 0; i < gArray.Length; i++)
                 {
-                    if (garage.ToArray()[i] != null)
+                    if (gArray[i] != null)
                     {
-                        Console.WriteLine("reeeem");
-                        Console.WriteLine(garage.ToArray()[i].RegisterNumber == reg_no);
+                        if (gArray[i].RegisterNumber.Equals(reg_no, StringComparison.InvariantCultureIgnoreCase))
+                        //if (gArray[i].RegisterNumber == reg_no)
+                        {
+                            //garage.ToArray()[i] = default(IVehcle);
 
-                    if (garage.ToArray()[i].RegisterNumber == reg_no) {
-                            ////   garage.ToArray()[i] = default;
+                            gArray = gArray.Where((source, index) => index != i).ToArray();
 
 
-
-
-                            Console.WriteLine(" removed" + garage.ToArray()[i].ToString());
+                            Console.WriteLine($"{garage.ToList()[i].ToString()}  is  removed!");
+                            GarageClass<IVehcle>.Remove_vehcle_f_Garage(); break;
                         }
 
-
-
-
-
-                        
-
-                    GarageClass<IVehcle>.Remove_vehcle_f_Garage();
+                    }
                 }
-                }
+
+            IVehcle[] copyArray = new IVehcle[GarageClass<IVehcle>.Total_parkingSpaces];
+
+            for (int i = 0; i < gArray.Length; i++)
+            {
+
+                copyArray[i] = gArray[i];
+            }
 
         }
 
@@ -66,32 +71,34 @@ namespace Garage {
 
         public bool Check_reg_No() {
 
+            
+
             bool reg_No_Validation = true;
 
             foreach (var vehcle in garage)
             {
-                if (vehcle is null) {
-                    //del
-                    Console.WriteLine("null");
-                    //del
+                if (vehcle is null)
+                {
+
                     reg_No_Validation = false;
                     continue;
                 }
-                   
-                else if (vehcle.RegisterNumber == reg_no)
 
-                    {
-                        reg_No_Validation = true;
-                        Console.WriteLine($" the reg number that you choosed is existed in garage  ");
+                else if (vehcle.RegisterNumber.Equals(reg_no, StringComparison.InvariantCultureIgnoreCase))
+                //  else if (vehcle.RegisterNumber == reg_no)
+
+                {
+                    reg_No_Validation = true;
+                    Console.WriteLine($" the reg number that you choosed is existed in garage  ");
                     break;
-                    }
-
-                    else
-                    { reg_No_Validation = false; Console.WriteLine("vehcle.RegisterNumber != reg_no"); }
                 }
 
+                else
+                { reg_No_Validation = false; }
+            }
 
-            
+
+
             return reg_No_Validation;
         }
 
@@ -103,7 +110,7 @@ namespace Garage {
             {
 
                 Console.WriteLine("enter vehcle regerstration no");
-                reg_no = int.Parse(Console.ReadLine());
+                reg_no = Console.ReadLine();
 
                 if (Check_reg_No())
                     Console.WriteLine("reg No is exist please enter another reg No");
@@ -116,7 +123,10 @@ namespace Garage {
             color = Console.ReadLine();
 
             Console.WriteLine("enter vehcle wheels no");
-            wheels_no = int.Parse(Console.ReadLine());
+
+            try {wheels_no = int.Parse(Console.ReadLine()); } catch (FormatException e) { Console.WriteLine(e.Message); }
+
+            
 
             Console.WriteLine("choose vehcle type  1- car  2- airplane  3-bus  4-boat  5-motorcycle");
             int choose2 = int.Parse(Console.ReadLine());
@@ -126,7 +136,7 @@ namespace Garage {
                 case 1:
                     {
                         fordon_type = V_Type.car;
-                        
+
                         Console.WriteLine("how many seats in the car?");
                         number_of_seats = int.Parse(Console.ReadLine());
                     }
@@ -152,7 +162,9 @@ namespace Garage {
                     {
                         fordon_type = V_Type.boat;
                         Console.WriteLine("enter boat length?");
-                        length = int.Parse(Console.ReadLine());
+                        
+                        try { length = int.Parse(Console.ReadLine());} catch (FormatException e) { Console.WriteLine(e.Message); }
+
                     }
                     break;
 
@@ -171,7 +183,7 @@ namespace Garage {
 
 
         public void Fuel() {
-            Console.WriteLine("choose Fuel Type  1- Diesel  2- benzen");
+            Console.WriteLine("choose Fuel Type  1- Diesel  2- Gasoline");
             int choose1 = int.Parse(Console.ReadLine());
 
             switch (choose1)
@@ -187,11 +199,10 @@ namespace Garage {
             vehcle_info();
 
             IVehcle holder = null;
-            // Vehcle vehcle = new Vehcle(reg_no,  color, wheels_no);
             switch (fordon_type)
             {
 
-                case V_Type.bus: { Bus obj1 = new Bus(reg_no, color, wheels_no, fuelType); holder = obj1;   break; }
+                case V_Type.bus: { Bus obj1 = new Bus(reg_no, color, wheels_no, fuelType); holder = obj1; break; }
                 case V_Type.car: Car obj2 = new Car(reg_no, color, wheels_no, number_of_seats); holder = obj2; break;
                 case V_Type.airplane: Airplane obj3 = new Airplane(reg_no, color, wheels_no, number_of_Engines); holder = obj3; break;
                 case V_Type.motorcycle: Motorcycle obj4 = new Motorcycle(reg_no, color, wheels_no, cylinder_volum); holder = obj4; break;

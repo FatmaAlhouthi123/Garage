@@ -8,7 +8,7 @@ namespace Garage {
         public int Lenght { get; set; }
 
 
-        public Boat(int registerNo, string color, int WheelsNo, int lenght) : base(registerNo, color, WheelsNo) {
+        public Boat(string registerNo, string color, int WheelsNo, int lenght) : base(registerNo, color, WheelsNo) {
             this.Lenght = lenght;
             this.VehcleType = V_Type.boat;
           
