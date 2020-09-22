@@ -10,12 +10,13 @@ namespace Garage {
 
     class GarageClass<T> : IEnumerable<T> where T : IVehcle {
 
-        static T[] garage_Array = new T[10];
 
         static int  vehcle_in_garage = 0;
         static int total_parkingSpaces = 10;
         static int free_parkingSpaces = Total_parkingSpaces - ParkingSpaces_in_use;
         static int parkingSpaces_in_use = 0;
+
+        static T[] garage_Array = new T[total_parkingSpaces];
 
         public GarageClass() {
             Garage_Array = garage_Array;
