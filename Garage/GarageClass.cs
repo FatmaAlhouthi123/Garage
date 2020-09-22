@@ -12,7 +12,7 @@ namespace Garage {
 
 
         static int  vehcle_in_garage = 0;
-        static int total_parkingSpaces = 10;
+        static int total_parkingSpaces = 8;
         static int free_parkingSpaces = Total_parkingSpaces - ParkingSpaces_in_use;
         static int parkingSpaces_in_use = 0;
 
@@ -45,10 +45,14 @@ String Vehcle_type { get; set; }
 
 
         public void Populate_Garage(T objekt) {
-           
-            garage_Array[Vehcle_in_garage] = objekt;
- 
-           Add_vehcle_f_Garage();
+            if (!IsFull())
+            {
+
+                garage_Array[Vehcle_in_garage] = objekt;
+
+                Add_vehcle_f_Garage();
+            } else
+                Console.WriteLine("Garage are full !! you cant park more vehcle");
         }
 
 
@@ -86,5 +90,9 @@ String Vehcle_type { get; set; }
             }
         }
 
+        public bool IsFull() {
+
+            return Free_ParkingSpaces == 0;
+        }
     }
 }

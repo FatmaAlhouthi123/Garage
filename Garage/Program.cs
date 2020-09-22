@@ -9,7 +9,7 @@ namespace Garage {
 
 
 
-            Console.WriteLine(" *************************************Welcome to garage************************************* ");
+            Console.WriteLine(" *************************************   Welcome to garage   ************************************* ");
 
 
 
@@ -26,11 +26,12 @@ namespace Garage {
             while (inLoop)
             {
 
-                Console.WriteLine("\n What do you want to do? type number from 1 to 5");
-                Console.WriteLine("  1- get total Parking spaces \n  2- add vehcle \n  3- remove vehcle ");
-                Console.WriteLine("  4- get number of vacant Parking spaces \n  5- get number of populated Parking spaces " +
-                    " \n  6-get ifo om vehcle in garage and number of them   \n  0- to close application\n");
-                Console.WriteLine(" *************************************************************************** \n");
+                Console.WriteLine("\n What do you want to do? type number from 1 to 5\n");
+
+                Console.WriteLine("  1)- get total Parking spaces \n  2)- add vehcle \n  3)- remove vehcle ");
+                Console.WriteLine("  4)- get number of vacant Parking spaces \n  5)- get number of populated Parking spaces " +
+                    " \n  6)-get ifo om vehcle in garage and number of them   \n  0)- to close application\n");
+                Console.WriteLine(" ************************************************************************************************** \n");
 
                 int chooice = int.Parse(Console.ReadLine());
                 switch (chooice)
