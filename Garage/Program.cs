@@ -47,7 +47,12 @@ namespace Garage {
 
                     case 2:
                         {
-                            gh.Add_vehcle_to_Garage();
+                            try
+                            {
+                                gh.Add_vehcle_to_Garage();
+                            }
+                            catch (FormatException e) { Console.WriteLine(e.Message); }
+                            catch (IndexOutOfRangeException e) { Console.WriteLine(e.Message); }
 
 
                         }
@@ -56,8 +61,12 @@ namespace Garage {
 
                     case 3:
                         {
-                            gh.Remove_vehcle_from_Garage();
-
+                            try
+                            {
+                                gh.Remove_vehcle_from_Garage();
+                            }
+                            catch (FormatException e) { Console.WriteLine(e.Message); }
+                            catch (IndexOutOfRangeException e) { Console.WriteLine(e.Message); }
                         }
                         break;
 

@@ -30,6 +30,9 @@ namespace Garage {
             //IEnumberable is immutable,
             IVehcle[] gArray = garage.ToArray();
 
+            Console.WriteLine(GarageClass < IVehcle >.Free_ParkingSpaces + "Free_ParkingSpaces");
+
+
             Console.WriteLine("Enter register Number for vehcle that you want to take out of garage ");
 
             try { reg_no = Console.ReadLine();} catch (FormatException e) { Console.WriteLine( e.Message); }
@@ -51,7 +54,9 @@ namespace Garage {
 
 
                             Console.WriteLine($"{garage.ToList()[i].ToString()}  is  removed!");
-                            GarageClass<IVehcle>.Remove_vehcle_f_Garage(); break;
+                            GarageClass<IVehcle>.Remove_vehcle_f_Garage();
+                            Console.WriteLine(GarageClass<IVehcle>.Free_ParkingSpaces + "Free_ParkingSpaces");
+                            break;
                         }
 
                     }
@@ -178,7 +183,6 @@ namespace Garage {
 
                 default: Console.WriteLine("please choose number between 1 - 5"); break;
             }
-
         }
 
 
