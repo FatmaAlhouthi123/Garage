@@ -12,11 +12,10 @@ namespace Garage {
 
 
         static int  vehcle_in_garage = 0;
-        static int total_parkingSpaces = 10;
+        static int total_parkingSpaces ;
         static int free_parkingSpaces = Total_parkingSpaces - ParkingSpaces_in_use;
         static int parkingSpaces_in_use = 0;
 
-        static T[] garage_Array = new T[total_parkingSpaces];
 
       
         public static int Vehcle_in_garage { get { return vehcle_in_garage; } set { vehcle_in_garage = value; } }
@@ -26,6 +25,7 @@ namespace Garage {
         public static int Free_ParkingSpaces { get { return free_parkingSpaces; } set { free_parkingSpaces = value; } } 
         public static int ParkingSpaces_in_use { get { return parkingSpaces_in_use; } set { parkingSpaces_in_use = value; } } 
         
+        static T[] garage_Array = new T[Total_parkingSpaces];
 String Vehcle_type { get; set; }
 
         public IEnumerator<T> GetEnumerator() {

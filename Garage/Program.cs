@@ -10,13 +10,18 @@ namespace Garage {
 
 
             Console.WriteLine(" *************************************   Welcome to garage   ************************************* ");
-
+            Console.WriteLine("enter the total spaces in garage");
+            GarageClass<IVehcle>.Total_parkingSpaces = int.Parse(Console.ReadLine());
 
 
             Garage_Manager gm = new Garage_Manager();
             gm.Default_vehcles_in_garage();
 
             bool inLoop = true;
+
+
+
+
 
             garage_handler gh = new garage_handler();
 
