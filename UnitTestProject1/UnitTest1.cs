@@ -7,7 +7,7 @@ namespace UnitTestProject1 {
     [TestClass]
     public class UnitTest1 {
         [TestMethod]
-        public void TestMethod1() {
+        public void Check_reg_NoTest() {
 
             //Arrange
             GarageClass<IVehcle> garage = new GarageClass<IVehcle>();
@@ -46,7 +46,7 @@ namespace UnitTestProject1 {
             Assert.IsTrue( reg_No_Validation);
         }
 
-        public void TestMethod2() {
+        public void Check_reg_NoTest2() {
 
             //Arrange
             GarageClass<IVehcle> garage = new GarageClass<IVehcle>();
