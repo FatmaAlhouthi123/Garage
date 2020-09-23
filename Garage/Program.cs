@@ -32,8 +32,11 @@ namespace Garage {
                 Console.WriteLine("  4)- get number of vacant Parking spaces \n  5)- get number of populated Parking spaces " +
                     " \n  6)-get ifo om vehcle in garage and number of them   \n  0)- to close application\n");
                 Console.WriteLine(" ************************************************************************************************** \n");
-
-                int chooice = int.Parse(Console.ReadLine());
+                try
+                {
+                      int chooice = int.Parse(Console.ReadLine());
+               
+               
                 switch (chooice)
                 {
 
@@ -75,7 +78,7 @@ namespace Garage {
                     case 4:
                         {
 
-                            gm.Free_parkingSpaces();
+                            Console.WriteLine(gm.Free_parkingSpaces());
                         }
                         break;
 
@@ -116,6 +119,9 @@ namespace Garage {
                         break;
 
                 }
+                }
+                catch (FormatException e) { Console.WriteLine(e.Message); }
+                catch (IndexOutOfRangeException e) { Console.WriteLine(e.Message); }
 
             }
 

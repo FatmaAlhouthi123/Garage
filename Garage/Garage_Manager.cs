@@ -42,8 +42,7 @@ namespace Garage {
 
             garage.AllVehcle_in_garag();
 
-        } 
+        }
         
-       
     }
 }
