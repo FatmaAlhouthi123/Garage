@@ -5,7 +5,7 @@ using System.Text;
 
 
 namespace Garage {
-    class Vehcle : IVehcle {
+    public class Vehcle : IVehcle {
 
         public string RegisterNumber { get; set; }
         public string Color { get; set; }

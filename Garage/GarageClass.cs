@@ -8,7 +8,7 @@ using System.Text;
 namespace Garage {
 
 
-    class GarageClass<T> : IEnumerable<T> where T : IVehcle {
+    public class GarageClass<T> : IEnumerable<T> where T : IVehcle {
 
 
         static int  vehcle_in_garage = 0;
